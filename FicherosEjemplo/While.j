@@ -24,8 +24,13 @@
         ; Cuerpo del bucle: Imprimir el valor de i
         getstatic java/lang/System/out Ljava/io/PrintStream;
         iload_0
-        invokevirtual java/io/PrintStream/print(I)V
 
+        invokevirtual java/io/PrintStream/print(I)V
+        getstatic java/lang/System/out Ljava/io/PrintStream;
+        ldc ","
+        invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+   
+        
         ; Incrementar la variable de control (i++)
         iinc 0 1
 
