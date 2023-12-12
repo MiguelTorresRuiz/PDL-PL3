@@ -4,22 +4,22 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 public class ListenerLinguine extends linguineParserBaseListener {
-    private Map<String, String> variables = new HashMap<>();
+    private Map<String, String[]> variables = new HashMap<>();
 
     @Override
     public void exitAsignacion(linguineParser.AsignacionContext ctx) {
         String variableName = ctx.IDENTIFICADOR().getText();
         String value;
         if (ctx.expresion() == null) {
-            value = ctx.sentencia_if().getText();  
+            value = ctx.sentencia_if().getText();
         }
         else {
             value = ctx.expresion().getText();
         }
-        variables.put(variableName, value);
+        variables.put(variableName, new String[]{value, "entero"});
     }
 
-    public Map<String, String> getVariables() {
+    public Map<String, String[]> getVariables() {
         return variables;
     }
 }

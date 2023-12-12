@@ -6,6 +6,9 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
 
 public class AnalizadorLinguine {
 
@@ -50,7 +53,19 @@ public class AnalizadorLinguine {
 
         // Imprimir la información recopilada
         System.out.println("Tabla de simbolos:");
-        System.out.println(listener.getVariables());
+        Iterator<String> keys = listener.getVariables().keySet().iterator();
+        Iterator<String[]> values = listener.getVariables().values().iterator();
+        int i = 0;
+        while (values.hasNext()) {
+            String[] array = values.next();
+                
+            System.out.print("variable " + keys.next() + ": ");
+            for (String elemento : array) {
+                System.out.print(elemento + " ");
+            }
+            System.out.println();
+            i++;
+        }
     }
 
     private static void printTree(ParseTree tree, String indent) {
