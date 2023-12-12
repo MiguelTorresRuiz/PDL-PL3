@@ -16,7 +16,7 @@
         iload_0
 
         ; Cargar el límite superior del bucle en la pila
-        ldc 34
+        ldc 14
 
         ; Comparar i con el límite superior
         if_icmpgt loop_end
@@ -25,6 +25,10 @@
         getstatic java/lang/System/out Ljava/io/PrintStream;
         iload_0
         invokevirtual java/io/PrintStream/print(I)V
+
+        getstatic java/lang/System/out Ljava/io/PrintStream;
+        ldc " "
+        invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
 
         ; Incrementar la variable de control (i++)
         iinc 0 1
