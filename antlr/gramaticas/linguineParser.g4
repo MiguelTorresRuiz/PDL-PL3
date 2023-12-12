@@ -11,7 +11,15 @@ sentencia: asignacion | sentencia_while|sentencia_for| declaracion_funcion | lla
 
 asignacion: LET? IDENTIFICADOR IGUAL (expresion | sentencia_if);
 
-expresion: REAL | IDENTIFICADOR | expresion (OP_SUMA | OP_RESTA | OP_MULT | OP_DIV) expresion| condicion | PARENTESIS_IZQUIERDO expresion PARENTESIS_DERECHO | llamada_funcion;
+expresion: REAL | IDENTIFICADOR | suma | resta | multiplicacion| division | condicion | PARENTESIS_IZQUIERDO expresion PARENTESIS_DERECHO | llamada_funcion;
+
+suma: expresion OP_SUMA expresion;
+
+resta: expresion OP_RESTA expresion;
+
+multiplicacion: expresion OP_MULT expresion;
+
+division: expresion OP_DIV expresion;
 
 condicion: (REAL | IDENTIFICADOR) (OP_MAYOR_ESTRICTO | OP_MENOR_ESTRICTO | OP_MAYOR_IGUAL | OP_MENOR_IGUAL | OP_DISTINTO | OP_EQUIVALENCIA) (REAL | IDENTIFICADOR);
 
