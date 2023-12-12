@@ -1,4 +1,4 @@
-// Generated from c:/Oscar/Universidad/3º/Procesadores de lenguaje/PL3/PDL-PL3/antlr/gramaticas/linguineLexer.g4 by ANTLR 4.13.1
+// Generated from c:/Users/david/Desktop/Universidad/Otro/Github/PDL-PL3/antlr/gramaticas/linguineLexer.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
