@@ -1,0 +1,2 @@
+select * from gramaticas
+select oscar from oscar where oscar>oscar
