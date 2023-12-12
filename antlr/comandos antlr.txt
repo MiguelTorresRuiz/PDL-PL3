@@ -1,0 +1,4 @@
+antlr linguineLexer.g4
+antlr linguineParser.g4
+javac *.java
+grun linguine programa -gui

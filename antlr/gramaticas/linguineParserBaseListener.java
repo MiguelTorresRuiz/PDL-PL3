@@ -63,6 +63,18 @@ public class linguineParserBaseListener implements linguineParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCondicion(linguineParser.CondicionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondicion(linguineParser.CondicionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSentencia_if(linguineParser.Sentencia_ifContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -70,6 +82,30 @@ public class linguineParserBaseListener implements linguineParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSentencia_if(linguineParser.Sentencia_ifContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSentencia_while(linguineParser.Sentencia_whileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSentencia_while(linguineParser.Sentencia_whileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSentencia_for(linguineParser.Sentencia_forContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSentencia_for(linguineParser.Sentencia_forContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

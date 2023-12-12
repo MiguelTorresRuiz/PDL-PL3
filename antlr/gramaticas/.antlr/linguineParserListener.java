@@ -1,4 +1,4 @@
-// Generated from c:/Oscar/Universidad/3º/Procesadores de lenguaje/PL2/antlr/gramaticas/linguineParser.g4 by ANTLR 4.13.1
+// Generated from c:/Oscar/Universidad/3º/Procesadores de lenguaje/PL3/PDL-PL3/antlr/gramaticas/linguineParser.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -47,6 +47,16 @@ public interface linguineParserListener extends ParseTreeListener {
 	 */
 	void exitExpresion(linguineParser.ExpresionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link linguineParser#condicion}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondicion(linguineParser.CondicionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link linguineParser#condicion}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondicion(linguineParser.CondicionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link linguineParser#sentencia_if}.
 	 * @param ctx the parse tree
 	 */
@@ -56,6 +66,16 @@ public interface linguineParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSentencia_if(linguineParser.Sentencia_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link linguineParser#sentencia_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterSentencia_while(linguineParser.Sentencia_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link linguineParser#sentencia_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitSentencia_while(linguineParser.Sentencia_whileContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link linguineParser#declaracion_funcion}.
 	 * @param ctx the parse tree

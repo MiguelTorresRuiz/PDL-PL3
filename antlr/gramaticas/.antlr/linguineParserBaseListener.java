@@ -1,4 +1,4 @@
-// Generated from c:/Oscar/Universidad/3º/Procesadores de lenguaje/PL2/antlr/gramaticas/linguineParser.g4 by ANTLR 4.13.1
+// Generated from c:/Oscar/Universidad/3º/Procesadores de lenguaje/PL3/PDL-PL3/antlr/gramaticas/linguineParser.g4 by ANTLR 4.13.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -64,6 +64,18 @@ public class linguineParserBaseListener implements linguineParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCondicion(linguineParser.CondicionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondicion(linguineParser.CondicionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSentencia_if(linguineParser.Sentencia_ifContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -71,6 +83,18 @@ public class linguineParserBaseListener implements linguineParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSentencia_if(linguineParser.Sentencia_ifContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSentencia_while(linguineParser.Sentencia_whileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSentencia_while(linguineParser.Sentencia_whileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

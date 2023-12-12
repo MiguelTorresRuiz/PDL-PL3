@@ -7,12 +7,19 @@ options {
 
 program: ((sentencia PUNTO_Y_COMA comentario? SALTO_LINEA?) | (comentario SALTO_LINEA?))*;
 
-sentencia: asignacion | declaracion_funcion | llamada_funcion | sentencia_show | sentencia_if | sentencia_match;
+sentencia: asignacion | sentencia_while|sentencia_for| declaracion_funcion | llamada_funcion | sentencia_show | sentencia_if | sentencia_match ;
 
-asignacion: LET IDENTIFICADOR IGUAL (expresion | sentencia_if);
-expresion: REAL | IDENTIFICADOR | expresion (OP_SUMA | OP_RESTA | OP_MULT | OP_DIV | OP_MAYOR_ESTRICTO | OP_MENOR_ESTRICTO | OP_MAYOR_IGUAL | OP_MENOR_IGUAL | OP_DISTINTO) expresion | PARENTESIS_IZQUIERDO expresion PARENTESIS_DERECHO | llamada_funcion;
+asignacion: LET? IDENTIFICADOR IGUAL (expresion | sentencia_if);
 
-sentencia_if: IF expresion THEN (sentencia | expresion) (ELSE (sentencia | expresion))?;
+expresion: REAL | IDENTIFICADOR | expresion (OP_SUMA | OP_RESTA | OP_MULT | OP_DIV) expresion| condicion | PARENTESIS_IZQUIERDO expresion PARENTESIS_DERECHO | llamada_funcion;
+
+condicion: (REAL | IDENTIFICADOR) (OP_MAYOR_ESTRICTO | OP_MENOR_ESTRICTO | OP_MAYOR_IGUAL | OP_MENOR_IGUAL | OP_DISTINTO | OP_EQUIVALENCIA) (REAL | IDENTIFICADOR);
+
+sentencia_if: IF PARENTESIS_IZQUIERDO condicion PARENTESIS_DERECHO THEN LLAVE_IZQUIERDA(program)LLAVE_DERECHA (ELSE LLAVE_IZQUIERDA(program)LLAVE_DERECHA)?;
+
+sentencia_while: WHILE PARENTESIS_IZQUIERDO condicion PARENTESIS_DERECHO DO LLAVE_IZQUIERDA(program)LLAVE_DERECHA;
+
+sentencia_for: FOR PARENTESIS_IZQUIERDO asignacion PUNTO_Y_COMA condicion PUNTO_Y_COMA asignacion PARENTESIS_DERECHO LLAVE_IZQUIERDA (program)LLAVE_DERECHA;
 
 declaracion_funcion: FUN IDENTIFICADOR PARENTESIS_IZQUIERDO parametros PARENTESIS_DERECHO FLECHA_DERECHA (sentencia | expresion);
 parametros: (expresion (COMA expresion)*)?;

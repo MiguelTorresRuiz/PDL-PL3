@@ -5,10 +5,15 @@ LET: 'let'|'LET';
 IF: 'if'|'IF';
 THEN: 'then'|'THEN';
 ELSE: 'else'|'ELSE';
+WHILE: 'mientras'|'MIENTRAS';
+DO: 'hacer' | 'HACER';
+FOR: 'para' | 'PARA';
 FUN: 'fun'|'FUN';
 MATCH: 'match'|'MATCH';
 WITH: 'with'|'WITH';
 SHOW: 'show'|'SHOW';
+LLAVE_IZQUIERDA: '{';
+LLAVE_DERECHA: '}';
 PARENTESIS_IZQUIERDO: '(';
 PARENTESIS_DERECHO: ')';
 SEPARADOR_MATCH: '|';
@@ -27,6 +32,7 @@ OP_MAYOR_ESTRICTO: '>';
 OP_MENOR_IGUAL: '<=';
 OP_MAYOR_IGUAL: '>=';
 OP_DISTINTO: '!=';
+OP_EQUIVALENCIA: '==';
 
 // Regla para identificadores
 IDENTIFICADOR: [a-zA-Z]+ [a-zA-Z0-9_]*;
