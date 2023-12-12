@@ -27,7 +27,7 @@
 
         invokevirtual java/io/PrintStream/print(I)V
         getstatic java/lang/System/out Ljava/io/PrintStream;
-        ldc ","
+        ldc " "
         invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
    
         

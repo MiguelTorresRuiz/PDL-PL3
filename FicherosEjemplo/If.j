@@ -16,16 +16,16 @@
     iload_1  ; Carga el valor de la variable local 1 (valor 3)
     if_icmpgt mayorQue  ; Compara los valores, si el primero es mayor que el segundo, salta a la etiqueta 'mayorQue'
 
-    ; Si el segundo número es mayor o igual que el primero
+    ; Si el segundo numero es mayor o igual que el primero
     getstatic java/lang/System/out Ljava/io/PrintStream;
-    ldc "El segundo número es mayor o igual que el primero"
+    ldc "El segundo numero es mayor o igual que el primero"
     invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
     goto fin  ; Salta a la etiqueta 'fin'
 
-    ; Etiqueta si el primer número es mayor que el segundo
+    ; Etiqueta si el primer numero es mayor que el segundo
     mayorQue:
     getstatic java/lang/System/out Ljava/io/PrintStream;
-    ldc "El primer número es mayor que el segundo"
+    ldc "El primer numero es mayor que el segundo"
     invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
 
     ; Etiqueta de fin
