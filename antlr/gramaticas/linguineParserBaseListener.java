@@ -63,18 +63,6 @@ public class linguineParserBaseListener implements linguineParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSuma(linguineParser.SumaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSuma(linguineParser.SumaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDiv(linguineParser.DivContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -82,6 +70,18 @@ public class linguineParserBaseListener implements linguineParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDiv(linguineParser.DivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSuma(linguineParser.SumaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSuma(linguineParser.SumaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

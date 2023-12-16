@@ -35,19 +35,19 @@ public interface linguineParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitEntre_parentesis(linguineParser.Entre_parentesisContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code suma}
-	 * labeled alternative in {@link linguineParser#expresion}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSuma(linguineParser.SumaContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code div}
 	 * labeled alternative in {@link linguineParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDiv(linguineParser.DivContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code suma}
+	 * labeled alternative in {@link linguineParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSuma(linguineParser.SumaContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code mult}
 	 * labeled alternative in {@link linguineParser#expresion}.

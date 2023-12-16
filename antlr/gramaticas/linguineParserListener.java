@@ -49,18 +49,6 @@ public interface linguineParserListener extends ParseTreeListener {
 	 */
 	void exitEntre_parentesis(linguineParser.Entre_parentesisContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code suma}
-	 * labeled alternative in {@link linguineParser#expresion}.
-	 * @param ctx the parse tree
-	 */
-	void enterSuma(linguineParser.SumaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code suma}
-	 * labeled alternative in {@link linguineParser#expresion}.
-	 * @param ctx the parse tree
-	 */
-	void exitSuma(linguineParser.SumaContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code div}
 	 * labeled alternative in {@link linguineParser#expresion}.
 	 * @param ctx the parse tree
@@ -72,6 +60,18 @@ public interface linguineParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDiv(linguineParser.DivContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code suma}
+	 * labeled alternative in {@link linguineParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void enterSuma(linguineParser.SumaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code suma}
+	 * labeled alternative in {@link linguineParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void exitSuma(linguineParser.SumaContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code mult}
 	 * labeled alternative in {@link linguineParser#expresion}.

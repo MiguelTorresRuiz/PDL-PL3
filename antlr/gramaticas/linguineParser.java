@@ -439,21 +439,6 @@ public class linguineParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class SumaContext extends ExpresionContext {
-		public List<ExpresionContext> expresion() {
-			return getRuleContexts(ExpresionContext.class);
-		}
-		public ExpresionContext expresion(int i) {
-			return getRuleContext(ExpresionContext.class,i);
-		}
-		public TerminalNode OP_SUMA() { return getToken(linguineParser.OP_SUMA, 0); }
-		public SumaContext(ExpresionContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof linguineParserVisitor ) return ((linguineParserVisitor<? extends T>)visitor).visitSuma(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class DivContext extends ExpresionContext {
 		public List<ExpresionContext> expresion() {
 			return getRuleContexts(ExpresionContext.class);
@@ -466,6 +451,21 @@ public class linguineParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof linguineParserVisitor ) return ((linguineParserVisitor<? extends T>)visitor).visitDiv(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class SumaContext extends ExpresionContext {
+		public List<ExpresionContext> expresion() {
+			return getRuleContexts(ExpresionContext.class);
+		}
+		public ExpresionContext expresion(int i) {
+			return getRuleContext(ExpresionContext.class,i);
+		}
+		public TerminalNode OP_SUMA() { return getToken(linguineParser.OP_SUMA, 0); }
+		public SumaContext(ExpresionContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof linguineParserVisitor ) return ((linguineParserVisitor<? extends T>)visitor).visitSuma(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -623,48 +623,48 @@ public class linguineParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 					case 1:
 						{
-						_localctx = new SumaContext(new ExpresionContext(_parentctx, _parentState));
+						_localctx = new MultContext(new ExpresionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expresion);
 						setState(85);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 						setState(86);
-						match(OP_SUMA);
+						match(OP_MULT);
 						setState(87);
 						expresion(8);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new RestaContext(new ExpresionContext(_parentctx, _parentState));
+						_localctx = new DivContext(new ExpresionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expresion);
 						setState(88);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
 						setState(89);
-						match(OP_RESTA);
+						match(OP_DIV);
 						setState(90);
 						expresion(7);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new MultContext(new ExpresionContext(_parentctx, _parentState));
+						_localctx = new SumaContext(new ExpresionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expresion);
 						setState(91);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(92);
-						match(OP_MULT);
+						match(OP_SUMA);
 						setState(93);
 						expresion(6);
 						}
 						break;
 					case 4:
 						{
-						_localctx = new DivContext(new ExpresionContext(_parentctx, _parentState));
+						_localctx = new RestaContext(new ExpresionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expresion);
 						setState(94);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(95);
-						match(OP_DIV);
+						match(OP_RESTA);
 						setState(96);
 						expresion(5);
 						}
@@ -1066,11 +1066,9 @@ public class linguineParser extends Parser {
 	}
 
 	public static class ParametrosContext extends ParserRuleContext {
-		public List<ExpresionContext> expresion() {
-			return getRuleContexts(ExpresionContext.class);
-		}
-		public ExpresionContext expresion(int i) {
-			return getRuleContext(ExpresionContext.class,i);
+		public List<TerminalNode> IDENTIFICADOR() { return getTokens(linguineParser.IDENTIFICADOR); }
+		public TerminalNode IDENTIFICADOR(int i) {
+			return getToken(linguineParser.IDENTIFICADOR, i);
 		}
 		public List<TerminalNode> COMA() { return getTokens(linguineParser.COMA); }
 		public TerminalNode COMA(int i) {
@@ -1097,10 +1095,10 @@ public class linguineParser extends Parser {
 			setState(160);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PARENTESIS_IZQUIERDO) | (1L << IDENTIFICADOR) | (1L << REAL))) != 0)) {
+			if (_la==IDENTIFICADOR) {
 				{
 				setState(152);
-				expresion(0);
+				match(IDENTIFICADOR);
 				setState(157);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -1110,7 +1108,7 @@ public class linguineParser extends Parser {
 					setState(153);
 					match(COMA);
 					setState(154);
-					expresion(0);
+					match(IDENTIFICADOR);
 					}
 					}
 					setState(159);
@@ -1780,8 +1778,8 @@ public class linguineParser extends Parser {
 		"\2EF\3\2\2\2FG\7#\2\2GJ\7\27\2\2HK\5\b\5\2IK\5\f\7\2JH\3\2\2\2JI\3\2\2"+
 		"\2K\7\3\2\2\2LM\b\5\1\2MV\7$\2\2NV\7#\2\2OV\5\n\6\2PQ\7\20\2\2QR\5\b\5"+
 		"\2RS\7\21\2\2SV\3\2\2\2TV\5\26\f\2UL\3\2\2\2UN\3\2\2\2UO\3\2\2\2UP\3\2"+
-		"\2\2UT\3\2\2\2Ve\3\2\2\2WX\f\t\2\2XY\7\31\2\2Yd\5\b\5\nZ[\f\b\2\2[\\\7"+
-		"\32\2\2\\d\5\b\5\t]^\f\7\2\2^_\7\33\2\2_d\5\b\5\b`a\f\6\2\2ab\7\34\2\2"+
+		"\2\2UT\3\2\2\2Ve\3\2\2\2WX\f\t\2\2XY\7\33\2\2Yd\5\b\5\nZ[\f\b\2\2[\\\7"+
+		"\34\2\2\\d\5\b\5\t]^\f\7\2\2^_\7\31\2\2_d\5\b\5\b`a\f\6\2\2ab\7\32\2\2"+
 		"bd\5\b\5\7cW\3\2\2\2cZ\3\2\2\2c]\3\2\2\2c`\3\2\2\2dg\3\2\2\2ec\3\2\2\2"+
 		"ef\3\2\2\2f\t\3\2\2\2ge\3\2\2\2hi\t\2\2\2ij\t\3\2\2jk\t\2\2\2k\13\3\2"+
 		"\2\2lm\7\4\2\2mn\7\20\2\2no\5\n\6\2op\7\21\2\2pq\7\5\2\2qr\7\16\2\2rs"+
@@ -1795,25 +1793,25 @@ public class linguineParser extends Parser {
 		"\u0091\7\n\2\2\u0091\u0092\7#\2\2\u0092\u0093\7\20\2\2\u0093\u0094\5\24"+
 		"\13\2\u0094\u0095\7\21\2\2\u0095\u0098\7\24\2\2\u0096\u0099\5\4\3\2\u0097"+
 		"\u0099\5\b\5\2\u0098\u0096\3\2\2\2\u0098\u0097\3\2\2\2\u0099\23\3\2\2"+
-		"\2\u009a\u009f\5\b\5\2\u009b\u009c\7\26\2\2\u009c\u009e\5\b\5\2\u009d"+
-		"\u009b\3\2\2\2\u009e\u00a1\3\2\2\2\u009f\u009d\3\2\2\2\u009f\u00a0\3\2"+
-		"\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a2\u009a\3\2\2\2\u00a2"+
-		"\u00a3\3\2\2\2\u00a3\25\3\2\2\2\u00a4\u00a5\7#\2\2\u00a5\u00a6\7\20\2"+
-		"\2\u00a6\u00a7\5\30\r\2\u00a7\u00a8\7\21\2\2\u00a8\27\3\2\2\2\u00a9\u00ae"+
-		"\5\b\5\2\u00aa\u00ab\7\26\2\2\u00ab\u00ad\5\b\5\2\u00ac\u00aa\3\2\2\2"+
-		"\u00ad\u00b0\3\2\2\2\u00ae\u00ac\3\2\2\2\u00ae\u00af\3\2\2\2\u00af\u00b2"+
-		"\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b1\u00a9\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2"+
-		"\31\3\2\2\2\u00b3\u00b4\7\13\2\2\u00b4\u00b5\7#\2\2\u00b5\u00b6\7\f\2"+
-		"\2\u00b6\u00b7\5\34\17\2\u00b7\33\3\2\2\2\u00b8\u00ba\7%\2\2\u00b9\u00b8"+
-		"\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\u00bb\3\2\2\2\u00bb\u00bd\5 \21\2\u00bc"+
-		"\u00b9\3\2\2\2\u00bd\u00be\3\2\2\2\u00be\u00bc\3\2\2\2\u00be\u00bf\3\2"+
-		"\2\2\u00bf\35\3\2\2\2\u00c0\u00c3\5\b\5\2\u00c1\u00c3\7\23\2\2\u00c2\u00c0"+
-		"\3\2\2\2\u00c2\u00c1\3\2\2\2\u00c3\37\3\2\2\2\u00c4\u00c5\7\22\2\2\u00c5"+
-		"\u00c6\5\36\20\2\u00c6\u00c9\7\24\2\2\u00c7\u00ca\5\b\5\2\u00c8\u00ca"+
-		"\7\25\2\2\u00c9\u00c7\3\2\2\2\u00c9\u00c8\3\2\2\2\u00ca!\3\2\2\2\u00cb"+
-		"\u00cc\7\r\2\2\u00cc\u00cd\7\20\2\2\u00cd\u00ce\5\b\5\2\u00ce\u00cf\7"+
-		"\21\2\2\u00cf#\3\2\2\2\u00d0\u00d4\7\'\2\2\u00d1\u00d3\5&\24\2\u00d2\u00d1"+
-		"\3\2\2\2\u00d3\u00d6\3\2\2\2\u00d4\u00d2\3\2\2\2\u00d4\u00d5\3\2\2\2\u00d5"+
+		"\2\u009a\u009f\7#\2\2\u009b\u009c\7\26\2\2\u009c\u009e\7#\2\2\u009d\u009b"+
+		"\3\2\2\2\u009e\u00a1\3\2\2\2\u009f\u009d\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0"+
+		"\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a2\u009a\3\2\2\2\u00a2\u00a3\3\2"+
+		"\2\2\u00a3\25\3\2\2\2\u00a4\u00a5\7#\2\2\u00a5\u00a6\7\20\2\2\u00a6\u00a7"+
+		"\5\30\r\2\u00a7\u00a8\7\21\2\2\u00a8\27\3\2\2\2\u00a9\u00ae\5\b\5\2\u00aa"+
+		"\u00ab\7\26\2\2\u00ab\u00ad\5\b\5\2\u00ac\u00aa\3\2\2\2\u00ad\u00b0\3"+
+		"\2\2\2\u00ae\u00ac\3\2\2\2\u00ae\u00af\3\2\2\2\u00af\u00b2\3\2\2\2\u00b0"+
+		"\u00ae\3\2\2\2\u00b1\u00a9\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\31\3\2\2"+
+		"\2\u00b3\u00b4\7\13\2\2\u00b4\u00b5\7#\2\2\u00b5\u00b6\7\f\2\2\u00b6\u00b7"+
+		"\5\34\17\2\u00b7\33\3\2\2\2\u00b8\u00ba\7%\2\2\u00b9\u00b8\3\2\2\2\u00b9"+
+		"\u00ba\3\2\2\2\u00ba\u00bb\3\2\2\2\u00bb\u00bd\5 \21\2\u00bc\u00b9\3\2"+
+		"\2\2\u00bd\u00be\3\2\2\2\u00be\u00bc\3\2\2\2\u00be\u00bf\3\2\2\2\u00bf"+
+		"\35\3\2\2\2\u00c0\u00c3\5\b\5\2\u00c1\u00c3\7\23\2\2\u00c2\u00c0\3\2\2"+
+		"\2\u00c2\u00c1\3\2\2\2\u00c3\37\3\2\2\2\u00c4\u00c5\7\22\2\2\u00c5\u00c6"+
+		"\5\36\20\2\u00c6\u00c9\7\24\2\2\u00c7\u00ca\5\b\5\2\u00c8\u00ca\7\25\2"+
+		"\2\u00c9\u00c7\3\2\2\2\u00c9\u00c8\3\2\2\2\u00ca!\3\2\2\2\u00cb\u00cc"+
+		"\7\r\2\2\u00cc\u00cd\7\20\2\2\u00cd\u00ce\5\b\5\2\u00ce\u00cf\7\21\2\2"+
+		"\u00cf#\3\2\2\2\u00d0\u00d4\7\'\2\2\u00d1\u00d3\5&\24\2\u00d2\u00d1\3"+
+		"\2\2\2\u00d3\u00d6\3\2\2\2\u00d4\u00d2\3\2\2\2\u00d4\u00d5\3\2\2\2\u00d5"+
 		"\u00d7\3\2\2\2\u00d6\u00d4\3\2\2\2\u00d7\u00e2\7)\2\2\u00d8\u00dd\7(\2"+
 		"\2\u00d9\u00dc\5&\24\2\u00da\u00dc\7%\2\2\u00db\u00d9\3\2\2\2\u00db\u00da"+
 		"\3\2\2\2\u00dc\u00df\3\2\2\2\u00dd\u00db\3\2\2\2\u00dd\u00de\3\2\2\2\u00de"+

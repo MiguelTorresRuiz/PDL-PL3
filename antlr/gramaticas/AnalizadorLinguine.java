@@ -82,20 +82,26 @@ public class AnalizadorLinguine {
     }
     public static String compilar(ParseTree tree) {
 
-        String instruccionesJasmin = new VisitorLinguine().visit(tree);
+        VisitorLinguine v = new VisitorLinguine();
 
-        return ".class public LinguineJasmin\n"
-        + ".super java/lang/Object\n"
-        + "\n"
-        + ".method public static main([Ljava/lang/String;)V\n"
-        + "    .limit stack 100\n"
-        + "    .limit locals 100\n"
-        + "\n"
-        + "    getstatic java/lang/System/out Ljava/io/PrintStream;\n"
-        + instruccionesJasmin + "\n"
-        + "    invokevirtual java/io/PrintStream/println(I)V\n"
-        + "return\n"
-        + "\n"
-        + ".end method";
+        String instruccionesJasmin = v.visit(tree);
+
+        System.out.println(v.getTablaSimbolos().toString());
+
+        return instruccionesJasmin;
+
+        // return ".class public LinguineJasmin\n"
+        // + ".super java/lang/Object\n"
+        // + "\n"
+        // + ".method public static main([Ljava/lang/String;)V\n"
+        // + "    .limit stack 100\n"
+        // + "    .limit locals 100\n"
+        // + "\n"
+        // + "    getstatic java/lang/System/out Ljava/io/PrintStream;\n"
+        // + instruccionesJasmin + "\n"
+        // + "    invokevirtual java/io/PrintStream/println(I)V\n"
+        // + "return\n"
+        // + "\n"
+        // + ".end method";
     }
 }

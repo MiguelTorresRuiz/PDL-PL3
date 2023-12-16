@@ -25,10 +25,10 @@ asignacion: LET? IDENTIFICADOR IGUAL (expresion | sentencia_if);
 expresion:
 	REAL #real
 	| IDENTIFICADOR #variable
-	| expresion OP_SUMA expresion	# suma
-	| expresion OP_RESTA expresion	# resta
 	| expresion OP_MULT expresion	# mult
 	| expresion OP_DIV expresion	# div
+	| expresion OP_SUMA expresion	# suma
+	| expresion OP_RESTA expresion	# resta
 	| condicion #cond
 	| PARENTESIS_IZQUIERDO expresion PARENTESIS_DERECHO #entre_parentesis
 	| llamada_funcion #llamada;
@@ -63,7 +63,7 @@ declaracion_funcion:
 		sentencia
 		| expresion
 	);
-parametros: (expresion (COMA expresion)*)?;
+parametros: (IDENTIFICADOR (COMA IDENTIFICADOR)*)?;
 
 llamada_funcion:
 	IDENTIFICADOR PARENTESIS_IZQUIERDO argumentos PARENTESIS_DERECHO;
