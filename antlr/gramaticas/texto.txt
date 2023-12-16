@@ -1,7 +1,8 @@
-let numero1 = 3+5-2-2;
-let numero2 = 1+2-3-4;
-let numero3 = 3+5*2-2;
-numero4 = 2;
+let numero1 = 3.5-3;
+let numero2 = 3.5*3;
+let numero3 = 9/3;
+let numero4 = 3 + 2 - 10;
+numero5 = 2;
 fun add(a, b) -> a + b;
 fun dec(c, d) -> a - b;
 fun mul(e, f, g, h) -> a * b;

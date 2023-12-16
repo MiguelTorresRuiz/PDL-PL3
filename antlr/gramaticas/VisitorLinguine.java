@@ -54,22 +54,40 @@ public class VisitorLinguine extends linguineParserBaseVisitor<String> {
 
     @Override
     public String visitSuma(linguineParser.SumaContext ctx) {
-        int suma = 0;
+        float suma = 0.0f;
         for (String s : visitChildren(ctx).split("\n")) {
-            suma += Integer.parseInt(s);
+            if (s.contains(".")) {
+                // si tiene parte decimal
+                suma += Float.parseFloat(s);
+            }
+            else {
+                // si es un entero
+                suma += Integer.parseInt(s);
+            }
         }
         return String.valueOf(suma);
     }
 
     @Override
     public String visitResta(linguineParser.RestaContext ctx) {
-        int suma = 0;
+        float suma = 0.0f;
         int i = 2;
         for (String s : visitChildren(ctx).split("\n")) {
-            if (i % 2 == 0) {
-                suma += Integer.parseInt(s);
-            } else {
-                suma -= Integer.parseInt(s);
+            if (s.contains(".")) {
+                // si tiene parte decimal
+                if (i % 2 == 0) {
+                    suma += Float.parseFloat(s);
+                } else {
+                    suma -= Float.parseFloat(s);
+                }
+            }
+            else {
+                // si es un entero
+                if (i % 2 == 0) {
+                    suma += Integer.parseInt(s);
+                } else {
+                    suma -= Integer.parseInt(s);
+                }
             }
             i++;
         }
@@ -78,11 +96,28 @@ public class VisitorLinguine extends linguineParserBaseVisitor<String> {
 
     @Override
     public String visitMult(linguineParser.MultContext ctx) {
-        int suma = 1;
+        float suma = 1.0f;
         for (String s : visitChildren(ctx).split("\n")) {
-            suma *= Integer.parseInt(s);
+            if (s.contains(".")) {
+                // si tiene parte decimal
+                suma *= Float.parseFloat(s);
+            }
+            else {
+                // si es un entero
+                suma *= Integer.parseInt(s);
+            }
         }
         return String.valueOf(suma);
+    }
+    
+    @Override
+    public String visitDiv(linguineParser.DivContext ctx) {
+        String[] numeros = visitChildren(ctx).split("\n");
+        float res = Float.parseFloat(numeros[0]);
+        for (int i = 1; i < numeros.length; i++) {
+            res = res / Float.parseFloat(numeros[i]);
+        }
+        return String.valueOf(res);
     }
 
     @Override
