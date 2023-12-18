@@ -22,6 +22,18 @@ public interface linguineParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSentencia(linguineParser.SentenciaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link linguineParser#arreglo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArreglo(linguineParser.ArregloContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link linguineParser#mapa}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMapa(linguineParser.MapaContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link linguineParser#asignacion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -63,6 +75,20 @@ public interface linguineParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLlamada(linguineParser.LlamadaContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code booleano}
+	 * labeled alternative in {@link linguineParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBooleano(linguineParser.BooleanoContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code cadena}
+	 * labeled alternative in {@link linguineParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCadena(linguineParser.CadenaContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code variable}
 	 * labeled alternative in {@link linguineParser#expresion}.
 	 * @param ctx the parse tree
@@ -96,6 +122,12 @@ public interface linguineParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCondicion(linguineParser.CondicionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link linguineParser#cortar_cadena}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCortar_cadena(linguineParser.Cortar_cadenaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link linguineParser#sentencia_if}.
 	 * @param ctx the parse tree

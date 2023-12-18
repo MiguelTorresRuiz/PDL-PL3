@@ -12,17 +12,22 @@ FUN: 'fun'|'FUN';
 MATCH: 'match'|'MATCH';
 WITH: 'with'|'WITH';
 SHOW: 'show'|'SHOW';
+AND: 'AND' | 'and';
+OR: 'OR' | 'or';
 LLAVE_IZQUIERDA: '{';
 LLAVE_DERECHA: '}';
 PARENTESIS_IZQUIERDO: '(';
 PARENTESIS_DERECHO: ')';
 SEPARADOR_MATCH: '|';
 INTERROGACION: '?';
+CORCHETE_IZQUIERDO: '[';
+CORCHETE_DERECHO:']';
 FLECHA_DERECHA: '->';
 LITERAL_CADENA: '"' .*? '"';
 COMA: ',';
 IGUAL: '=';
 PUNTO_Y_COMA: ';';
+DOS_PUNTOS: ':';
 OP_SUMA: '+';
 OP_RESTA: '-';
 OP_MULT: '*';
@@ -33,6 +38,12 @@ OP_MENOR_IGUAL: '<=';
 OP_MAYOR_IGUAL: '>=';
 OP_DISTINTO: '!=';
 OP_EQUIVALENCIA: '==';
+
+
+BOOLEANO: TRUE|FALSE;
+
+TRUE: 'true';
+FALSE: 'false';
 
 // Regla para identificadores
 IDENTIFICADOR: [a-zA-Z]+ [a-zA-Z0-9_]*;

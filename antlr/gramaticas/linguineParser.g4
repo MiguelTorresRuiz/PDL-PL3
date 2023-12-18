@@ -18,12 +18,21 @@ sentencia:
 	| llamada_funcion
 	| sentencia_show
 	| sentencia_if
-	| sentencia_match;
+	| sentencia_match
+	| expresion;
 
-asignacion: LET? IDENTIFICADOR IGUAL (expresion | sentencia_if);
+arreglo: CORCHETE_IZQUIERDO ((REAL | BOOLEANO | LITERAL_CADENA) (COMA (REAL | BOOLEANO | LITERAL_CADENA))*) CORCHETE_DERECHO;
+
+mapa: LLAVE_IZQUIERDA ((REAL|LITERAL_CADENA) DOS_PUNTOS (REAL | BOOLEANO | LITERAL_CADENA))
+	(SALTO_LINEA? COMA SALTO_LINEA?(REAL|LITERAL_CADENA) DOS_PUNTOS 
+	(REAL | BOOLEANO | LITERAL_CADENA))* LLAVE_DERECHA;
+
+asignacion: LET? IDENTIFICADOR IGUAL (expresion | sentencia_if | cortar_cadena | arreglo | mapa);
 
 expresion:
 	REAL #real
+	| BOOLEANO #booleano
+	| LITERAL_CADENA #cadena
 	| IDENTIFICADOR #variable
 	| expresion OP_MULT expresion	# mult
 	| expresion OP_DIV expresion	# div
@@ -41,6 +50,8 @@ condicion: (REAL | IDENTIFICADOR) (
 		| OP_DISTINTO
 		| OP_EQUIVALENCIA
 	) (REAL | IDENTIFICADOR);
+
+cortar_cadena: LITERAL_CADENA CORCHETE_IZQUIERDO REAL DOS_PUNTOS REAL CORCHETE_DERECHO| IDENTIFICADOR CORCHETE_IZQUIERDO REAL DOS_PUNTOS REAL CORCHETE_DERECHO;
 
 sentencia_if:
 	IF PARENTESIS_IZQUIERDO condicion PARENTESIS_DERECHO THEN LLAVE_IZQUIERDA (
@@ -60,8 +71,7 @@ sentencia_for:
 
 declaracion_funcion:
 	FUN IDENTIFICADOR PARENTESIS_IZQUIERDO parametros PARENTESIS_DERECHO FLECHA_DERECHA (
-		sentencia
-		| expresion
+		program | expresion
 	);
 parametros: (IDENTIFICADOR (COMA IDENTIFICADOR)*)?;
 

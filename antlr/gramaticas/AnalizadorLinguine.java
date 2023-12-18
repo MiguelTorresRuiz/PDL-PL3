@@ -1,10 +1,13 @@
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -42,35 +45,15 @@ public class AnalizadorLinguine {
 
         // COMPILAR A JASMIN
         // esto habría que escribirlo en un archivo y ya ejecutarlo como código jasmin
-        System.out.println(compilar(tree));
+        String programa = compilar(tree);
+        System.out.println(programa);
 
-        // Imprimir el árbol en la consola
-        // System.out.println("En formato de texto plano con el metodo toStringTree:");
-        // System.out.println(tree.toStringTree(parser));
+        // Ruta del archivo donde deseas escribir el string
+        FileWriter fileWriter = new FileWriter("programa.j");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write(programa);
+        bufferedWriter.close();
 
-        // System.out.println("En un formato mas legible:");
-        // printTree(tree, "");
-
-        // // Crear el listener y recorrer el árbol
-        // ListenerLinguine listener = new ListenerLinguine();
-        // ParseTreeWalker walker = new ParseTreeWalker();
-        // walker.walk(listener, tree);
-
-        // // Imprimir la información recopilada
-        // System.out.println("Tabla de simbolos:");
-        // Iterator<String> keys = listener.getVariables().keySet().iterator();
-        // Iterator<String[]> values = listener.getVariables().values().iterator();
-        // int i = 0;
-        // while (values.hasNext()) {
-        //     String[] array = values.next();
-                
-        //     System.out.print("variable " + keys.next() + ": ");
-        //     for (String elemento : array) {
-        //         System.out.print(elemento + " ");
-        //     }
-        //     System.out.println();
-        //     i++;
-        // }
     }
 
     private static void printTree(ParseTree tree, String indent) {
@@ -80,6 +63,7 @@ public class AnalizadorLinguine {
             printTree(tree.getChild(i), indent + "  ");
         }
     }
+
     public static String compilar(ParseTree tree) {
 
         VisitorLinguine v = new VisitorLinguine();
@@ -88,20 +72,16 @@ public class AnalizadorLinguine {
 
         System.out.println(v.getTablaSimbolos().toString());
 
-        return instruccionesJasmin;
-
-        // return ".class public LinguineJasmin\n"
-        // + ".super java/lang/Object\n"
-        // + "\n"
-        // + ".method public static main([Ljava/lang/String;)V\n"
-        // + "    .limit stack 100\n"
-        // + "    .limit locals 100\n"
-        // + "\n"
-        // + "    getstatic java/lang/System/out Ljava/io/PrintStream;\n"
-        // + instruccionesJasmin + "\n"
-        // + "    invokevirtual java/io/PrintStream/println(I)V\n"
-        // + "return\n"
-        // + "\n"
-        // + ".end method";
+        return ".class public LinguineJasmin\n"
+                + ".super java/lang/Object\n"
+                + "\n"
+                + ".method public static main([Ljava/lang/String;)V\n"
+                + "    .limit stack 100\n"
+                + "    .limit locals 100\n"
+                + "\n"
+                + instruccionesJasmin + "\n"
+                + "return\n"
+                + "\n"
+                + ".end method";
     }
 }
